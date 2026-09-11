@@ -1,5 +1,21 @@
 document.documentElement.classList.add('js');
 
+const themeToggle = document.querySelector('.theme-toggle');
+const themeLabel = document.querySelector('.theme-label');
+const themeIcon = document.querySelector('.theme-icon');
+const savedTheme = (() => { try { return localStorage.getItem('mythtech-theme'); } catch { return null; } })();
+const setTheme = theme => {
+  const light = theme === 'light';
+  document.documentElement.dataset.theme = light ? 'light' : 'dark';
+  themeToggle?.setAttribute('aria-pressed', String(light));
+  themeToggle?.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+  if (themeLabel) themeLabel.textContent = light ? 'Dark mode' : 'Light mode';
+  if (themeIcon) themeIcon.textContent = light ? '☾' : '☼';
+  try { localStorage.setItem('mythtech-theme', light ? 'light' : 'dark'); } catch {}
+};
+setTheme(savedTheme === 'light' ? 'light' : 'dark');
+themeToggle?.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light'));
+
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const menuButton = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
