@@ -42,8 +42,18 @@ html[data-theme=light] .contact-card{background:linear-gradient(135deg,#e7f1df,#
 html[data-theme=light] .contact-note{color:#536258}
 @media(max-width:760px){.work{padding-top:105px;padding-bottom:105px}.section-heading{margin-bottom:40px}.project-visual{height:270px}.project-card{padding:11px}.contact-note{margin-top:22px;max-width:220px}}
 
+/* Quiet interaction polish */
+.header-status,.theme-toggle,.header-cta,.filter-chip,.button-primary,.text-link,.project-link,.secondary-link{transition:color .22s ease,background-color .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease}
+.theme-toggle:hover{border-color:rgba(214,255,84,.42);background:rgba(214,255,84,.08)}
+.filter-chip{position:relative;overflow:hidden}
+.filter-chip:after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.16) 50%,transparent 70%);transform:translateX(-130%);transition:transform .55s ease;pointer-events:none}
+.filter-chip:hover:after,.filter-chip:focus-visible:after{transform:translateX(130%)}
+.project-card{transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background-color .35s ease}
+.hero-metrics>div{transition:transform .22s ease,color .22s ease}.hero-metrics>div:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.filter-chip:after{display:none}.hero-metrics>div{transition:none}}
+
 /* React Bits-inspired Split Text hero reveal */
-.split-heading .split-word{display:inline-block;opacity:0;transform:translateY(.7em);filter:blur(8px);animation:split-word-in .78s cubic-bezier(.22,1,.36,1) forwards;animation-delay:calc(80ms + (var(--split-index) * 90ms));will-change:transform,opacity,filter}
+.split-heading .split-word{display:inline-block;opacity:0;transform:translateY(.35em);filter:blur(2px);animation:split-word-in .64s cubic-bezier(.22,1,.36,1) forwards;animation-delay:calc(70ms + (var(--split-index) * 75ms));will-change:transform,opacity,filter}
 @keyframes split-word-in{to{opacity:1;transform:translateY(0);filter:blur(0)}}
 @media(prefers-reduced-motion:reduce){.split-heading .split-word{animation:none;opacity:1;transform:none;filter:none}}
 @media(max-width:760px){.theme-toggle{padding:7px 9px}.theme-label{display:none}}
